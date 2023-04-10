@@ -1,13 +1,13 @@
-import java.util.Random;
 import java.util.Scanner;
 
-public class CommandsV2 {
-  private static Scanner scanner = new Scanner(System.in);
-  private static Random random = new Random();
-  private static int counter; 
+// * ---------------------------------------------------------------------- * //
 
-  // * -------------------------------------------------------------------- * //
+public class SearchArray {
+  private static Scanner scanner = new Scanner(System.in);
+  private static int counter; 
   
+  // * -------------------------------------------------------------------- * //
+
   public static void binarySearchCommand(int[] vector) {
     System.out.println("\nValor para ser encontrado: ");
     String input = scanner.nextLine();
@@ -30,7 +30,7 @@ public class CommandsV2 {
     
     return;
   }
-  
+
   // ------------------------------------------------------------------------ //
 
   private static int binarySearch(int[] vector, int min, int max, int value) {
@@ -57,19 +57,7 @@ public class CommandsV2 {
 
   // ------------------------------------------------------------------------ //
 
-  public static void SeedVectorWithRandom(int[] vector) {
-    int acc = 0;
-
-    for (int i = 0; i < vector.length; i++) {
-      int integer = Math.abs(random.nextInt(1000));
-      vector[i] = acc + integer;
-      acc = vector[i];
-    }
-  }
-
-  // ------------------------------------------------------------------------ //
-
-  public static void compareSearch(int[] vector) {
+  public static void compareSearches(int[] vector) {
     int linearIterations;
 
     counter = 0;
@@ -83,7 +71,7 @@ public class CommandsV2 {
 
     binarySearch(vector, 0, vector.length -1, value);
     
-    int index = Commands.linearSearch(vector, value);
+    int index = linearSearch(vector, value);
 
     if (index < 0) {
       linearIterations = vector.length;
@@ -95,5 +83,38 @@ public class CommandsV2 {
     System.out.println("Numero de iterações:");
     System.out.printf("\nBinária: %d;", counter);
     System.out.printf("\nLinear: %d;", linearIterations);
+  }
+
+  // ------------------------------------------------------------------------ //
+
+  public static int linearSearch(int[] vector, int value) {
+    for (int i = 0; i < vector.length; i++) {
+      if (vector[i] == value) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  // ------------------------------------------------------------------------ //
+
+  public static void findValueInArrayCommand(int[] vector) {
+    System.out.println("\nValor para ser encontrado: ");
+    String input = scanner.nextLine();
+
+    if (!Utils.isNumeric(input)) return;
+    
+    Integer value = Integer.parseInt(input);
+
+    int index = linearSearch(vector, value);
+    
+    if (index < 0) {
+      System.out.println("\nValor não encontrado!\n");
+      return;
+    }
+
+    System.out.printf("Encontrado o valor %s na posição %s\n", value, index);
+    return;
   }
 }

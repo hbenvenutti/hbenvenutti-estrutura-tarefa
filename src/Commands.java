@@ -1,17 +1,19 @@
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.Stack;
 
 // * ---------------------------------------------------------------------- * //
 
 public class Commands {
-  private static Scanner scanner = new Scanner(System.in);
   
   // *** --- READ functions --------------------------------------------- *** //
   
   static public void biggestValue(int [] vector) {
-    int position = vector.length - 1;
-    int biggest = vector[position];
+    int [] vectorCopy = vector.clone();
+
+    Arrays.sort(vectorCopy);
+
+    int position = vectorCopy.length - 1;
+    int biggest = vectorCopy[position];
 
     System.out.println("\nO maior valor no vetor é:");
 
@@ -22,49 +24,23 @@ public class Commands {
   // ------------------------------------------------------------------------ //
 
   public static void countValues(int[] vector) {
-    int counter = 0;
-    System.out.println("\nQuantidade de valores significativos no vetor:");
+    int emptyValuesCounter = 0;
+    int [] vectorCopy = vector.clone();
 
-    for (int i = 0; i < vector.length; i++) {
-      if (vector[i] != 0) {
-        counter++;
-      }
-    }
-
-    System.out.printf("\n%s\n", counter);
-    return;
-  }
-
-  // ------------------------------------------------------------------------ //
-
-  public static void findValueInArrayCommand(int[] vector) {
-    System.out.println("\nValor para ser encontrado: ");
-    String input = scanner.nextLine();
-
-    if (!Utils.isNumeric(input)) return;
+    Arrays.sort(vectorCopy);
     
-    Integer value = Integer.parseInt(input);
-
-    int index = linearSearch(vector, value);
-    
-    if (index < 0) {
-      System.out.println("\nValor não encontrado!\n");
-      return;
-    }
-
-    System.out.printf("Encontrado o valor %s na posição %s\n", value, index);
-    return;
-  }
-
-  // ------------------------------------------------------------------------ //
-  public static int linearSearch(int[] vector, int value) {
     for (int i = 0; i < vector.length; i++) {
-      if (vector[i] == value) {
-        return i;
-      }
+      if (vectorCopy[i] != 0) break;
+      
+      emptyValuesCounter++;
     }
 
-    return -1;
+    int significantValues = vectorCopy.length - emptyValuesCounter;
+
+    System.out
+      .printf("\nQuantidade de valores significativos no vetor: %s", significantValues);
+
+    return;
   }
 
   // ------------------------------------------------------------------------ //
@@ -100,48 +76,5 @@ public class Commands {
     }
 
     System.out.println(Arrays.toString(stack.toArray()));
-  }
-  
-  // *** --- write functions -------------------------------------------- *** //
-  
-  public static void addValueToArray(int[] vector) {
-    System.out.println("\nValor para ser inserido (deve ser inteiro e positivo): ");
-    
-    String value = scanner.nextLine();
-    
-    if (!Utils.isNumeric(value)) return;
-
-    Integer number = Integer.parseInt(value);
-    
-    for (int i = 0; i < vector.length; i++) {
-      if (vector[i] == 0) {
-        vector[i] = Math.abs(number);
-        break;
-      }
-
-      if (i == vector.length -1) {
-        System.out.println("\nVetor cheio!\n");
-        return;
-      }
-    }
-
-    Arrays.sort(vector);
-  }
-
-  // ------------------------------------------------------------------------ //
-
-  public static void removeValueFromArray(int[] vector) {
-    System.out.println("\nValor a ser removido: ");
-    Integer value = Integer.parseInt(scanner.nextLine());
-
-    for (int i = 0; i < vector.length; i++) {
-      if (vector[i] == value) {
-        vector[i] = 0;
-        return;
-      }
-    }
-
-    System.out.println("\nValor não encontrado!\n");
-    return;
   }
 }

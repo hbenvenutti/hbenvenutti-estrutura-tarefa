@@ -21,7 +21,7 @@ public class CommandsMap {
   + "\n11) Listar os valores armazenados no vetor;";
 
 
-  // * --- functions ------------------------------------------------------ * //
+  // * --- methods -------------------------------------------------------- * //
   public boolean wasVectorCreated() {
     if (vector != null) return true;
     
@@ -35,8 +35,10 @@ public class CommandsMap {
     return this.menu;
   }
 
+  // ------------------------------------------------------------------------ //
+
   public boolean isCommandValid(String command) {
-    Runnable value = this.commandsMap.get(command);
+    Runnable value = this.commands.get(command);
 
     if (value != null) return true;
 
@@ -48,7 +50,7 @@ public class CommandsMap {
   // ------------------------------------------------------------------------ //
 
   public void executeCommand(String command) {
-    this.commandsMap.get(command).run();
+    this.commands.get(command).run();
 
     return;
   }
@@ -57,23 +59,24 @@ public class CommandsMap {
 
   private void createVector() {
     this.vector = new int[vectorLength];
+    System.err.println("Vetor criado/recriado com sucesso!");
 
     return;
   };
 
   // * --- hashmap -------------------------------------------------------- * //
 
-  private Map<String, Runnable> commandsMap = new HashMap<>() {{
+  private Map<String, Runnable> commands = new HashMap<>() {{
     this.put("1", () -> createVector());
-    this.put("2", () -> Commands.addValueToArray(vector));
-    this.put("3", () -> Commands.removeValueFromArray(vector));
-    this.put("4", () -> Commands.findValueInArrayCommand(vector));
+    this.put("2", () -> InsertIntoArray.addValueToArray(vector));
+    this.put("3", () -> RemoveFromArray.removeValue(vector));
+    this.put("4", () -> SearchArray.findValueInArrayCommand(vector));
     this.put("5", () -> Commands.countValues(vector));
     this.put("6", () -> Commands.biggestValue(vector));
     this.put("7", () -> Commands.lowestValue(vector));
-    this.put("8", () -> CommandsV2.SeedVectorWithRandom(vector));
-    this.put("9", () -> CommandsV2.binarySearchCommand(vector));
-    this.put("10", () -> CommandsV2.compareSearch(vector));
+    this.put("8", () -> SeedVector.SeedWithRandom(vector));
+    this.put("9", () -> SearchArray.binarySearchCommand(vector));
+    this.put("10", () -> SearchArray.compareSearches(vector));
     this.put("11", () -> Commands.listArray(vector));
   }};
 }
