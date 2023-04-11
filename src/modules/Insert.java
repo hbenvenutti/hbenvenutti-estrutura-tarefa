@@ -1,8 +1,11 @@
+package modules;
 import java.util.Scanner;
+
+import validation.InputValidation;
 
 // * ---------------------------------------------------------------------- * //
 
-public class InsertIntoArray {
+public class Insert {
   private static Scanner scanner = new Scanner(System.in);
 
   // *** --- private methods -------------------------------------------- *** //
@@ -20,7 +23,7 @@ public class InsertIntoArray {
     
     String value = scanner.nextLine();
     
-    if (!Utils.isNumeric(value)) return;
+    if (!InputValidation.isNumeric(value)) return;
 
     Integer number = Integer.parseInt(value);
     

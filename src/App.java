@@ -23,8 +23,6 @@ public class App {
 
       if (!action.equals("1") && !commandsMap.wasVectorCreated()) continue;
 
-
-
       commandsMap.executeCommand(action);
 
       System.out.println("");

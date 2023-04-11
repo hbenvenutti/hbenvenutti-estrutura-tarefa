@@ -1,4 +1,5 @@
-public class Utils {
+package validation;
+public class InputValidation {
   static public boolean isNumeric(String value) {
     try {
       Integer.parseInt(value);
