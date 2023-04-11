@@ -15,15 +15,15 @@ public class CommandsMap {
   private int[] vector;
   
   private String menu = "\nEscolha uma função digitando um número:"
-  + "\n1) Criar ou esvaziar o vetor;"
-  + "\n2) Inserir um valor no vetor;"
-  + "\n3) Apagar um valor do vetor;"
-  + "\n4) Consultar se existe determinado valor no vetor;"
-  + "\n5) Consultar quantos valores significativos ocupam o vetor;"
-  + "\n6) Consultar qual o maior valor armazenado;"
-  + "\n7) Consultar qual o menor valor armazenado;"
-  + "\n8) Preencher o vetor com valores aleatórios ordenados;"
-  + "\n9) Fazer uma busca binária;"
+  + "\n01) Criar ou esvaziar o vetor;"
+  + "\n02) Inserir um valor no vetor;"
+  + "\n03) Apagar um valor do vetor;"
+  + "\n04) Consultar se existe determinado valor no vetor;"
+  + "\n05) Consultar quantos valores significativos ocupam o vetor;"
+  + "\n06) Consultar qual o maior valor armazenado;"
+  + "\n07) Consultar qual o menor valor armazenado;"
+  + "\n08) Preencher o vetor com valores aleatórios ordenados;"
+  + "\n09) Fazer uma busca binária;"
   + "\n10) Comparar buscas binária e linear;"
   + "\n11) Preencher o vetor com valores aleatórios não ordenados;"
   + "\n12) Ordenar o vetor;"
@@ -43,7 +43,7 @@ public class CommandsMap {
     this.put("9", () -> Search.binarySearchCommand(vector));
     this.put("10", () -> Search.compareSearches(vector));
     this.put("11", () -> Seed.seedRandom(vector));
-    this.put("12", () -> Sort.sortCommand(vector));
+    this.put("12", () -> Sort.execute(vector));
     this.put("13", () -> DataPresentation.listArray(vector));
   }};
 
