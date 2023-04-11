@@ -2,6 +2,7 @@ package modules;
 import java.util.Scanner;
 
 import sort.QuickSort;
+import sort.SelectionSort;
 
 // * ---------------------------------------------------------------------- * //
 
@@ -46,11 +47,73 @@ public class Sort {
         break;
       }
 
+      case "3": {
+        SelectionSort.execute(vector);
+        break;
+      }
+
+      case "4": {
+        break;
+      }
+
       default: {
         return;
       }
     }
 
     setVectorSorted(true);
+  }
+
+  // ------------------------------------------------------------------------ //
+
+  public static void compareSortMethods(int[] vector) {
+    int start = 0;
+    int end = vector.length-1;
+    int swapCounter;
+    int comparisonCounter;
+    long startTime;
+    long endTime;
+    long executionTime;
+
+    int[] copy1 = vector.clone();
+    int[] copy2 = vector.clone();
+    int[] copy3 = vector.clone();
+    int[] copy4 = vector.clone();
+
+    // *** --- quick ---------------------------------------------------- *** //
+    QuickSort.resetComparisonCounter();
+    QuickSort.resetSwapCounter();
+
+    startTime = System.currentTimeMillis();
+    QuickSort.sort(copy1, start, end);
+    endTime = System.currentTimeMillis();
+
+    executionTime = endTime - startTime;
+
+    swapCounter = QuickSort.getSwapCounter();
+    comparisonCounter = QuickSort.getComparisonCounter();
+    
+    System.out.println("QuickSort");
+    System.out.println("Comparações: " + comparisonCounter);
+    System.out.println("Trocas: " + swapCounter);
+    System.out.println("Tempo de execução: " + executionTime + "ms");
+
+    // *** --- selection ------------------------------------------------ *** //
+    SelectionSort.resetComparisonCounter();
+    SelectionSort.resetSwapCounter();
+
+    startTime = System.currentTimeMillis();
+    SelectionSort.execute(vector);
+    endTime = System.currentTimeMillis();
+
+    executionTime = endTime - startTime;
+
+    swapCounter = SelectionSort.getSwapCounter();
+    comparisonCounter = SelectionSort.getComparisonCounter();
+
+    System.out.println("\nSelectionSort");
+    System.out.println("Comparações: " + comparisonCounter);
+    System.out.println("Trocas: " + swapCounter);
+    System.out.println("Tempo de execução: " + executionTime + "ms");
   }
 }

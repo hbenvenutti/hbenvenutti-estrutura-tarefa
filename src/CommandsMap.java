@@ -27,7 +27,8 @@ public class CommandsMap {
   + "\n10) Comparar buscas binária e linear;"
   + "\n11) Preencher o vetor com valores aleatórios não ordenados;"
   + "\n12) Ordenar o vetor;"
-  + "\n13) Listar os valores armazenados no vetor;";
+  + "\n13) Comparar os métodos de ordenação;"
+  + "\n14) Listar os valores armazenados no vetor;";
 
   // * --- hashmap -------------------------------------------------------- * //
 
@@ -44,7 +45,8 @@ public class CommandsMap {
     this.put("10", () -> Search.compareSearches(vector));
     this.put("11", () -> Seed.seedRandom(vector));
     this.put("12", () -> Sort.execute(vector));
-    this.put("13", () -> DataPresentation.listArray(vector));
+    this.put("13", () -> Sort.compareSortMethods(vector));
+    this.put("14", () -> DataPresentation.listArray(vector));
   }};
 
   // * --- methods -------------------------------------------------------- * //

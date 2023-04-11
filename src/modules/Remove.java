@@ -13,6 +13,7 @@ public class Remove {
     for (int i = 0; i < vector.length; i++) {
       if (vector[i] == value) {
         vector[i] = 0;
+        Sort.setVectorSorted(false);
         return;
       }
     }

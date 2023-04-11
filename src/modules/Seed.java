@@ -31,7 +31,7 @@ public class Seed {
     }
 
     System.err.println("Vetor populado com sucesso!");
-     
+    Sort.setVectorSorted(false);
     return;
   }
 }

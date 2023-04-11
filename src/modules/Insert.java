@@ -35,6 +35,8 @@ public class Insert {
 
       System.out.println("Valor inserido com sucesso!");
 
+      Sort.setVectorSorted(false);
+      
       return;
     }
 
