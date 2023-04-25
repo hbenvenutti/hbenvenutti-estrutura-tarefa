@@ -1,21 +1,21 @@
-import java.util.Scanner;
+import io.Input;
+import io.Output;
 
 public class App {
   // * --- vars ----------------------------------------------------------- * //
-  static Scanner scanner = new Scanner(System.in);
-  static CommandsMap commandsMap = new CommandsMap();
-  
-  static String text = "\n0) Sair;";
+  static final CommandsMap commandsMap = new CommandsMap();
+  static final String exit = "\n0) Sair;";
+
+  static final String menu = commandsMap.getMenu() + exit;
   
   // * --- main ----------------------------------------------------------- * //
 
   public static void main(String[] args) throws Exception {    
     
     while (true) {
-      System.out.println(commandsMap.getMenuText() + text);
+      Output.print(menu);
 
-      String action = scanner.nextLine();
-      // int action = scanner.nextInt();
+      String action = Input.string();
 
       if (!commandsMap.isCommandValid(action)) continue;
 
@@ -25,7 +25,7 @@ public class App {
 
       commandsMap.executeCommand(action);
 
-      System.out.println("");
+      Output.print("");
     }
   }
 }
