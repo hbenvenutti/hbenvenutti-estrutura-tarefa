@@ -33,8 +33,7 @@ public class Vector {
 
   // * --- set/get -------------------------------------------------------- * //
   public void setVector() {
-    Output.print("Digite o tamanho do vetor: ");
-    int length = Input.integer();
+    int length = Input.integer("Digite o tamanho do vetor: ");
     
     if (length <= 0) return;
     
@@ -69,8 +68,8 @@ public class Vector {
 
   // ------------------------------------------------------------------------ //
 
-  private Boolean IndexIsValid(int index) {
-    return index < 0 || index > this.length - 1;
+  private Boolean indexIsValid(int index) {
+    return index >= 0 && index < this.length;
   }
 
   // * --- methods -------------------------------------------------------- * //
@@ -100,9 +99,9 @@ public class Vector {
 
   public void showLowest() {
     int[] clone = this.cloneVector();
-    Find.lowest(clone);
+    int value = Find.lowest(clone);
 
-    Output.print("O menor valor é: " + clone);
+    Output.print("O menor valor é: " + value);
     return;
   }
   
@@ -111,8 +110,8 @@ public class Vector {
   public void showGreatest() {
     int[] clone = this.cloneVector();
 
-    Find.greatest(clone);
-    Output.print("O maior valor é: " + clone);
+    int value = Find.greatest(clone);
+    Output.print("O maior valor é: " + value);
     return;
   }
 
@@ -126,13 +125,11 @@ public class Vector {
   // ------------------------------------------------------------------------ //
 
   public void insert() {
-    Output.print("Digite o valor a ser inserido: ");
-    int value = Input.integer();
+    int value = Input.integer("Digite o valor a ser inserido: ");
 
-    Output.print("Digite a posição a ser inserida: ");
-    int index = Input.integer();
+    int index = Input.integer("Digite a posição a ser inserida: ");
 
-    if (!IndexIsValid(index)) {
+    if (!indexIsValid(index)) {
       handleInvalidIndex();
       return ;
     }
@@ -144,8 +141,7 @@ public class Vector {
   // ------------------------------------------------------------------------ //
 
   public void deleteByValue() {
-    Output.print("Digite o valor a ser removido: ");
-    int value = Input.integer();
+    int value = Input.integer("Digite o valor a ser removido: ");
 
     Delete.byValue(vector, value);
 
@@ -155,10 +151,9 @@ public class Vector {
   // ------------------------------------------------------------------------ //
 
   public void deleteByIndex() {
-    Output.print("Digite a posição a ser removida: ");
-    int index = Input.integer();
+    int index = Input.integer("Digite a posição a ser removida: ");
 
-    if (!IndexIsValid(index)) {
+    if (!indexIsValid(index)) {
       handleInvalidIndex();
       return ;
     }
@@ -171,8 +166,7 @@ public class Vector {
   // ------------------------------------------------------------------------ //
 
   public void linearSearch() {
-    Output.print("Digite o valor a ser buscado: ");
-    int value = Input.integer();
+    int value = Input.integer("Digite o valor a ser buscado: ");
 
     int position = LinearSearch.execute(vector, value);
 
@@ -181,7 +175,7 @@ public class Vector {
       return;
     }
 
-    Output.print("Valor encontrado na posição " + position);
+    Output.print("Valor encontrado na posição: " + position);
     return;
   }
 
@@ -190,17 +184,16 @@ public class Vector {
   public void binarySearch() {
     int[] clone = this.cloneVector();
 
-    Output.print("Digite o valor a ser buscado: ");
-    int value = Input.integer();
+    int value = Input.integer("Digite o valor a ser buscado: ");
 
-    int position = BinarySearch.execute(clone, value, 0, length);
+    int position = BinarySearch.search(clone, value);
 
     if (position < 0) {
       Output.print("Valor não encontrado no vetor");
       return;
     }
 
-    Output.print("Valor encontrado na posição " + position);
+    Output.print("Valor encontrado na posição: " + position);
     return;
   }
 

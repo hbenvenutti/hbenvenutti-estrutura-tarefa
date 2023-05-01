@@ -9,7 +9,7 @@ public class Find {
   // ------------------------------------------------------------------------ //
 
   public static int lowest(int[] vector) {
-    int lowest = Integer.MAX_VALUE;
+    int lowest = 0;
   
     for (int i = 0; i < vector.length; i++) {
       if (vector[i] == 0) continue;

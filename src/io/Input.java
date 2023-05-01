@@ -7,16 +7,19 @@ public class Input {
 
   // ------------------------------------------------------------------------ //
 
-  public static String string() {
+  public static String string(String message) {
+    Output.print(message);
     return scanner.nextLine();
   }
 
   // ------------------------------------------------------------------------ //
 
-  public static int integer() {
+  public static int integer(String message) {
+    Output.print(message);
+    String input = scanner.nextLine();
+
     try {
-      int value = scanner.nextInt();
-      
+      int value = Integer.parseInt(input);
       return Math.abs(value);
 
     } catch (Exception e) {

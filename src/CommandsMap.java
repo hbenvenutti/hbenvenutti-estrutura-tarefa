@@ -72,10 +72,10 @@ public class CommandsMap {
 
   public boolean isCommandValid(String command) {
     Runnable value = this.commands.get(command);
-
+    
     if (value != null) return true;
 
-    System.out.println("Comando inválido!\n");
+    Output.printError("Comando inválido!");
 
     return false;
   }

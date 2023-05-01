@@ -1,5 +1,4 @@
 import io.Input;
-import io.Output;
 
 public class App {
   // * --- vars ----------------------------------------------------------- * //
@@ -11,21 +10,22 @@ public class App {
   // * --- main ----------------------------------------------------------- * //
 
   public static void main(String[] args) throws Exception {    
-    
+    boolean firstIteration = true;
+
     while (true) {
-      Output.print(menu);
+      if (!firstIteration) Input.string("\nTecle enter para continuar..");
 
-      String action = Input.string();
-
+      String action = Input.string(menu);
+      firstIteration = false;
+      
       if (action.equals("0")) break;
-
-      if (!commandsMap.isCommandValid(action)) continue;
-
+      
       if (!action.equals("1") && !commandsMap.wasVectorCreated()) continue;
-
+      
+      if (!commandsMap.isCommandValid(action)) continue;
+      
       commandsMap.executeCommand(action);
 
-      Output.print("");
     }
   }
 }

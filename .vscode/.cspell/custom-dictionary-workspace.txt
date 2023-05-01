@@ -16,6 +16,7 @@ cheio
 Comando
 Comparar
 Consultar
+continuar
 criado
 Criar
 determinado
@@ -68,6 +69,7 @@ serão
 significativos
 sucesso
 tamanho
+Tecle
 terão
 usando
 válido

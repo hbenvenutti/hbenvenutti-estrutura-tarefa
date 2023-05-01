@@ -1,5 +1,7 @@
 package search;
 
+import io.Output;
+
 // * ---------------------------------------------------------------------- * //
 
 public class BinarySearch {
@@ -19,9 +21,16 @@ public class BinarySearch {
 
   // * --- methods -------------------------------------------------------- * //
 
-  public static int execute(int[] vector, int value, int min, int max ) {
+  public static int search(int[] vector, int value) {
+    int min = 0;
+    int max = vector.length - 1;
+
+    return binarySearch(vector, value, min, max);
+  }
+
+  private static int binarySearch(int[] vector, int value, int min, int max ) {
     iterationCounter++;
-    
+
     if (max < min) {
       return -1;
     }
@@ -33,11 +42,11 @@ public class BinarySearch {
     }
 
     else if (vector[center] > value) {
-      return execute(vector, min, center -1, value);
+      return binarySearch(vector, value, min, center -1);
     }
 
     else {
-      return execute(vector, center + 1, max, value);
+      return binarySearch(vector, value, center + 1, max);
     }
   }
 }
