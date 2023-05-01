@@ -1,7 +1,5 @@
 package search;
 
-import io.Output;
-
 // * ---------------------------------------------------------------------- * //
 
 public class BinarySearch {
