@@ -1,66 +1,70 @@
 import java.util.HashMap;
 import java.util.Map;
 
-import modules.DataPresentation;
-import modules.Insert;
-import modules.Remove;
-import modules.Search;
-import modules.Seed;
-import modules.Sort;
+import io.Output;
+import vector.Vector;
 
 // * ---------------------------------------------------------------------- * //
 
 public class CommandsMap {
-  private int vectorLength = 10000;
-  private int[] vector;
+  private Vector vector;
+
+  public CommandsMap() {
+    this.vector = new Vector();
+  }
   
-  private String menu = "\nEscolha uma função digitando um número:"
-  + "\n01) Criar ou esvaziar o vetor;"
-  + "\n02) Inserir um valor no vetor;"
-  + "\n03) Apagar um valor do vetor;"
-  + "\n04) Consultar se existe determinado valor no vetor;"
-  + "\n05) Consultar quantos valores significativos ocupam o vetor;"
-  + "\n06) Consultar qual o maior valor armazenado;"
-  + "\n07) Consultar qual o menor valor armazenado;"
-  + "\n08) Preencher o vetor com valores aleatórios ordenados;"
-  + "\n09) Fazer uma busca binária;"
-  + "\n10) Comparar buscas binária e linear;"
-  + "\n11) Preencher o vetor com valores aleatórios não ordenados;"
-  + "\n12) Ordenar o vetor;"
-  + "\n13) Comparar os métodos de ordenação;"
-  + "\n14) Listar os valores armazenados no vetor;";
+  private String menu = "\n"
+  + "Escolha uma função digitando um número:"
+  + "\n01) Criar um novo vetor;"
+  + "\n02) Popular o vetor com números aleatórios;"
+  + "\n03) Popular o vetor com números aleatórios ordenados;"
+  + "\n04) Consultar quantos valores significativos ocupam o vetor;"
+  + "\n05) Buscar o menor valor do vetor;"
+  + "\n06) Buscar o maior valor do vetor;"
+  + "\n07) Listar os valores do vetor;"
+  + "\n08) Inserir um valor em uma posição;"
+  + "\n09) Remover um valor do vetor;"
+  + "\n10) Remover um valor de uma posição;"
+  + "\n11) Buscar um valor linearmente;"
+  + "\n12) Buscar um valor binariamente;"
+  + "\n13) Ordenar o vetor usando Bubblesort;"
+  + "\n14) Ordenar o vetor usando Insertionionsort;"
+  + "\n15) Ordenar o vetor usando Selectionsort;"
+  + "\n16) Ordenar o vetor usando Quicksort;";
 
   // * --- hashmap -------------------------------------------------------- * //
 
   private Map<String, Runnable> commands = new HashMap<>() {{
-    this.put("1", () -> createVector());
-    this.put("2", () -> Insert.addValueToArray(vector));
-    this.put("3", () -> Remove.removeValue(vector));
-    this.put("4", () -> Search.linearSearchCommand(vector));
-    this.put("5", () -> DataPresentation.countValues(vector));
-    this.put("6", () -> Search.findBiggest(vector));
-    this.put("7", () -> Search.findLowest(vector));
-    this.put("8", () -> Seed.SeedRandomOrdered(vector));
-    this.put("9", () -> Search.binarySearchCommand(vector));
-    this.put("10", () -> Search.compareSearches(vector));
-    this.put("11", () -> Seed.seedRandom(vector));
-    this.put("12", () -> Sort.execute(vector));
-    this.put("13", () -> Sort.compareSortMethods(vector));
-    this.put("14", () -> DataPresentation.listArray(vector));
+    this.put("1", () -> vector.setVector());
+    this.put("2", () -> vector.seed());
+    this.put("3", () -> vector.seedOrdered());
+    this.put("4", () -> vector.countValid());
+    this.put("5", () -> vector.showLowest());
+    this.put("6", () -> vector.showGreatest());
+    this.put("7", () -> vector.list());
+    this.put("8", () -> vector.insert());
+    this.put("9", () -> vector.deleteByValue());
+    this.put("10", () -> vector.deleteByIndex());
+    this.put("11", () -> vector.linearSearch());
+    this.put("12", () -> vector.binarySearch());
+    this.put("13", () -> vector.bubblesort());
+    this.put("14", () -> vector.insertionSort());
+    this.put("15", () -> vector.selectionSort());
+    this.put("16", () -> vector.quicksort());
   }};
 
   // * --- methods -------------------------------------------------------- * //
 
   public boolean wasVectorCreated() {
-    if (vector != null) return true;
+    if (vector.getVector() != null) return true;
     
-    System.err.println("O vetor não foi iniciado!");
+    Output.printError("O vetor não foi iniciado!");
     return false;
   }
 
   // ------------------------------------------------------------------------ //
 
-  public String getMenuText() {
+  public String getMenu() {
     return this.menu;
   }
 
@@ -83,15 +87,4 @@ public class CommandsMap {
 
     return;
   }
-
-  // ------------------------------------------------------------------------ //
-
-  private void createVector() {
-    this.vector = new int[vectorLength];
-    System.err.println("Vetor criado/recriado com sucesso!");
-
-    return;
-  };
-
-
 }

@@ -6,7 +6,10 @@ armazenado
 armazenados
 arrlength
 binária
+binariamente
+Bubblesort
 busca
+buscado
 Buscar
 buscas
 cheio
@@ -22,6 +25,7 @@ elemento
 encontrado
 Encontrado
 Escolha
+está
 esvaziar
 esvaziar,
 existe
@@ -32,9 +36,12 @@ iniciado,
 inserida
 inserido
 Inserir
+Insertionionsort
 instancia
+inválida
 inválido
 iterações
+linearmente
 Listagem
 Listar
 maior
@@ -43,6 +50,7 @@ métodos
 número
 ocupam
 ordenação
+ordenado
 ordenados
 Ordenar
 populado
@@ -51,14 +59,17 @@ Preencher
 Quantidade
 quantos
 recriado
+removida
 removido
 removidos
 Sair
+Selectionsort
 serão
 significativos
 sucesso
 tamanho
 terão
+usando
 válido
 valores
 vetor

@@ -30,7 +30,14 @@ public class BubbleSort {
 
   // * -------------------------------------------------------------------- * //
 
-  public static void execute(int[] vector, int end){
+  public static void sort(int[] vector) {
+    bubblesort(vector, vector.length - 1);
+    return;
+  }
+
+  // ------------------------------------------------------------------------ //
+
+  private static void bubblesort(int[] vector, int end){
     if (end == 0) return;
 
     for (int i = 0; i < end; i++) {
@@ -44,6 +51,7 @@ public class BubbleSort {
       swapCounter++;
     }
 
-    execute(vector, end - 1);
+    bubblesort(vector, end - 1);
+    return;
   }
 }

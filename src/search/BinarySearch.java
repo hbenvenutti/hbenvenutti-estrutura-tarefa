@@ -19,7 +19,7 @@ public class BinarySearch {
 
   // * --- methods -------------------------------------------------------- * //
 
-  public static int execute(int[] vector, int min, int max, int value) {
+  public static int execute(int[] vector, int value, int min, int max ) {
     iterationCounter++;
     
     if (max < min) {

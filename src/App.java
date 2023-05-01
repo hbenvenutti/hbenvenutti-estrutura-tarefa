@@ -17,9 +17,9 @@ public class App {
 
       String action = Input.string();
 
-      if (!commandsMap.isCommandValid(action)) continue;
-
       if (action.equals("0")) break;
+
+      if (!commandsMap.isCommandValid(action)) continue;
 
       if (!action.equals("1") && !commandsMap.wasVectorCreated()) continue;
 

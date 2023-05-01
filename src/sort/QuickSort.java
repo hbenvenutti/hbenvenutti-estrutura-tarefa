@@ -32,18 +32,25 @@ public class QuickSort {
 
   // ------------------------------------------------------------------------ //
 
-  public static void sort(int[] vector, int start, int end) {
+  public static void sort(int[] vector) {
+    quicksort(vector, 0, vector.length - 1);
+  }
 
+  // ------------------------------------------------------------------------ //
+
+  private static void quicksort(int[] vector, int start, int end) {
     int pivotPosition = start;
     int pivot = vector[pivotPosition];
     int left = start;
     int right = end;
 
     while(left<=right) {
+      
       while (vector[left] < pivot) {
         left++;
         comparisonCounter++;
       }
+
       while (vector[right] > pivot) {
         right--;
         comparisonCounter++;
@@ -61,8 +68,8 @@ public class QuickSort {
       }
     }
 
-    if (start < right) sort(vector, start, right);
+    if (start < right) quicksort(vector, start, right);
     
-    if (left < end) sort(vector, left, end);
+    if (left < end) quicksort(vector, left, end);
   }
 }

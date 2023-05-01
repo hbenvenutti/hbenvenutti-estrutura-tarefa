@@ -6,6 +6,8 @@ public class Find {
     return vector[last];
   }
 
+  // ------------------------------------------------------------------------ //
+
   public static int lowest(int[] vector) {
     int lowest = Integer.MAX_VALUE;
   
@@ -18,4 +20,6 @@ public class Find {
   
     return lowest;
   }
+
+  // ------------------------------------------------------------------------ //
 }
